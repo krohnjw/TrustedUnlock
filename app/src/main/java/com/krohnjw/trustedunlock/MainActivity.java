@@ -4,21 +4,17 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-
-import com.krohnjw.trustedunlock.util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +32,9 @@ public class MainActivity extends Activity {
         mTrustedDevices = PreferencesHelper.getTrustedDevices(this);
 
         int mode = 0;
-        try {
-            mode = Integer.parseInt(PreferencesHelper.getPref(this, PreferencesHelper.PREF_LOCK_TYPE));
-        } catch (Exception e) {
+        try { mode = Integer.parseInt(PreferencesHelper.getPref(this, PreferencesHelper.PREF_LOCK_TYPE));}
+        catch (Exception ignored) {}
 
-        }
         switch (mode) {
             case PreferencesHelper.MODE_PASSWORD:
                 ((RadioButton) findViewById(R.id.password)).setChecked(true);
@@ -99,15 +93,14 @@ public class MainActivity extends Activity {
                         if (name.substring(0, 1).equals("\"")) {
                             name = name.substring(1, name.length() - 1);
                         }
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception ignored) {}
 
                     ((TextView) convertView.findViewById(android.R.id.text1)).setText(name);
 
                     if (getTrustedDevices().contains(d.getAddress())) {
-                        ((ImageView) convertView.findViewById(android.R.id.icon)).setVisibility(View.VISIBLE);
+                        (convertView.findViewById(android.R.id.icon)).setVisibility(View.VISIBLE);
                     } else {
-                        ((ImageView) convertView.findViewById(android.R.id.icon)).setVisibility(View.GONE);
+                        (convertView.findViewById(android.R.id.icon)).setVisibility(View.GONE);
                     }
                 }
                 return convertView;
@@ -139,7 +132,7 @@ public class MainActivity extends Activity {
         if (mTrustedDevices == null) {
             mTrustedDevices = PreferencesHelper.getTrustedDevices(MainActivity.this);
         }
-        Logger.d("Trusted devices is " + TextUtils.join(",", mTrustedDevices));
+
         return mTrustedDevices;
     }
 }

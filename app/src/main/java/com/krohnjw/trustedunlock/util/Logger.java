@@ -1,14 +1,14 @@
 package com.krohnjw.trustedunlock.util;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Date;
-
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Date;
 
 public class Logger {
     public static final String  DIR_NAME = "TrustedUnlock";
@@ -116,4 +116,6 @@ public class Logger {
     private static void writeFile(String message) {
         new Logger.fileWriter(false, true, true).execute(message, FILE_NAME);
     }
+
+    // TODO: Add log file truncation
 }

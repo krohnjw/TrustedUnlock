@@ -14,7 +14,7 @@ public class PreferencesHelper {
     public static final String PREFS_NAME = "LockscreenPrefs";
 
     public static final int MODE_NONE           = 0;
-    public static final int MODE_SWIPE          = 1;
+    public static final int MODE_SWIPE          = 1; // TODO: Implement support for swipe lock screen
     public static final int MODE_PIN            = 2;
     public static final int MODE_PATTERN        = 3;
     public static final int MODE_PASSWORD       = 4;
