@@ -1,0 +1,40 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:listChoiceIndicatorSingle">@drawable/btn_radio_holo_light</item>
+    </style>
+
+    <style name="CardContainer">
+        <item name="android:background">@drawable/card_bg</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="CardHeading">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ItemText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+</resources>

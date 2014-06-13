@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.krohnjw.trustedunlock">
+
+    <uses-sdk
+        android:targetSdkVersion="18"
+        android:minSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <application
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:allowBackup="true">
+
+
+        <activity
+            android:name="com.krohnjw.trustedunlock.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.krohnjw.trustedunlock.service.LockIntentService"
+            android:label="@string/app_name"
+            android:exported="false"></service>
+
+        <service
+            android:name="com.krohnjw.trustedunlock.service.ForegroundService"
+            android:label="@string/app_name"
+            android:exported="false"></service>
+
+
+        <receiver
+            android:name="com.krohnjw.trustedunlock.receiver.ActionReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.krohnjw.LOCK_SCREEN_ACTION" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.krohnjw.trustedunlock.receiver.BluetoothConnectReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.krohnjw.trustedunlock.receiver.BluetoothDisconnectReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
